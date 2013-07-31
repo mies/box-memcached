@@ -1,5 +1,5 @@
 name: memcached
-version: 0.0.1
+version: 0.0.5
 inherits: mies/puppet@0.0.6
 type: service
 platform: ubuntu@12.04
@@ -13,5 +13,5 @@ script: |
   sudo puppet apply --modulepath=$WERCKER_SOURCE_DIR/modules $WERCKER_SOURCE_DIR/manifests/init.pp
 env:
   WERCKER_MEMCACHED_PORT: 11211
-  WERCKER_COUCHDB_HOST: $$HOST$$
-  WERCKER_COUCHDB_VERSION: "1.4.13"
+  WERCKER_MEMCACHED_HOST: $$HOST$$
+  WERCKER_MEMCACHED_VERSION: "1.4.13"
