@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+import memcache
+import re
+import sys
+import urllib
+
+sys.path.append("<%= bindir %>")
+from gstat import gstats
+
+
+def aws_host():
+    """return the short hostname for the aws host calling this method"""
+    host = urllib.urlopen(
+        "http://169.254.169.254/latest/meta-data/public-hostname"
+        ).read()
+    return re.sub(r'\..*$', r'', host)
+
+
+def metric(host, item):
+    return "servers.cache.%s.%s" % (host, item)
+
+
+def send_stats(mc):
+    wanted = ('get_hits', 'get_misses')
+
+    aws = aws_host()
+
+    for host, stats in mc.get_stats():
+        gstats(
+            (metric(aws, k), v)
+            for k,v in stats.iteritems()
+            if k in wanted
+            )
+
+
+if __name__ == "__main__":
+    mc = memcache.Client(['localhost:11211'])
+    send_stats(mc)
