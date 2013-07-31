@@ -1,6 +1,6 @@
 name: memcached
 version: 0.0.1
-inherits: mies/puppet
+inherits: mies/puppet@0.0.6
 type: service
 platform: ubuntu@12.04
 description: wercker box for memcached
