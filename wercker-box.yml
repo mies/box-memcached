@@ -1,6 +1,6 @@
 name: memcached
 version: 0.0.10
-inherits: mies/librarian-puppet@0.0.2
+inherits: mies/librarian-puppet@0.0.3
 type: service
 platform: ubuntu@12.04
 description: wercker box for memcached
@@ -10,7 +10,7 @@ keywords:
 packages:
   - memcached@1.4.13
 script: |
-  sudo puppet apply --modulepath=modules manifests/init.pp
+  sudo puppet apply --modulepath=modules manifests/init.pp --detailed-exitcode
 env:
   WERCKER_MEMCACHED_PORT: 11211
   WERCKER_MEMCACHED_HOST: $$HOST$$
