@@ -10,6 +10,7 @@ keywords:
 packages:
   - memcached@1.4.13
 script: |
+  sudo apt-get update
   sudo puppet apply --modulepath=modules manifests/init.pp --detailed-exitcode
 env:
   WERCKER_MEMCACHED_PORT: 11211
