@@ -5,4 +5,4 @@ build:
         name: librarian install
         code: |
           cd $WERCKER_ROOT
-          librarian-puppet install
+          librarian-puppet install --verbose
