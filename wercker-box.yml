@@ -10,7 +10,6 @@ keywords:
 packages:
   - memcached@1.4.13
 script: |
-  sudo librarian-puppet install
   sudo puppet apply --modulepath=modules manifests/init.pp
 env:
   WERCKER_MEMCACHED_PORT: 11211
