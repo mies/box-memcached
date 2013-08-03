@@ -1,5 +1,5 @@
 name: memcached
-version: 0.0.12
+version: 0.1.0
 inherits: mies/librarian-puppet@0.0.2
 type: service
 platform: ubuntu@12.04
